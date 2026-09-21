@@ -1,0 +1,154 @@
+/* ===== Card ===== */
+
+.card {
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  border-radius: 1rem;
+  box-shadow: 0 0.1rem 0.3rem rgba(20, 45, 42, 0.08);
+  color: #051513;
+  overflow: hidden;
+}
+
+/* ---- Header ---- */
+.card__header {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.2rem;
+  margin: 0 1.6rem;
+  padding: 1.2rem 0 1.4rem;
+  border-bottom: 0.1rem solid #e8f0ef;
+}
+
+.card__logo {
+  flex-shrink: 0;
+  width: 3.6rem;
+  height: 3.6rem;
+  display: grid;
+  place-items: center;
+  border: 0.1rem solid #e8f0ef;
+  border-radius: 0.8rem;
+  overflow: hidden;
+}
+
+.card__logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.card__title_wrap {
+  flex: 1;
+  min-width: 0; /* lets long titles/urls truncate instead of overflowing */
+}
+
+.card__title {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card__url {
+  display: block;
+  margin-top: 0.2rem;
+  font-size: 1.2rem;
+  color: #4d4d4d;
+  text-decoration: none;
+}
+
+.card__url:hover {
+  text-decoration: underline;
+}
+
+.card__menu_btn {
+  flex-shrink: 0;
+  width: 2.6rem;
+  height: 2.6rem;
+  display: grid;
+  place-items: center;
+  background: #ffffff;
+  border: 0.1rem solid #c0cfcc;
+  border-radius: 0.6rem;
+  color: #051513;
+  cursor: pointer;
+}
+
+.card__menu-btn:hover {
+  background: #e8f0ef;
+}
+
+.card__menu-btn:focus-visible {
+  outline: 0.2rem solid #014745;
+  outline-offset: 0.2rem;
+}
+
+/* ---- Body ---- */
+.card__body {
+  flex: 1; /* pushes the footer to the bottom when cards have equal height */
+  padding: 1.4rem 1.6rem 1.6rem;
+}
+
+.card__description {
+  margin: 0 0 1.2rem;
+  font-size: 1.4rem;
+  line-height: 1.45;
+  color: #2d3d3b;
+}
+
+.card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.card__tag {
+  padding: 0.2rem 0.7rem;
+  font-size: 1.2rem;
+  color: #4d4d4d;
+  background: #e8f0ef;
+  border-radius: 0.4rem;
+}
+
+/* ---- Footer ---- */
+.card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.0rem 1.6rem;
+  border-top: 0.1rem solid #e8f0ef;
+}
+
+.card__stats {
+  display: flex;
+  gap: 1.2rem;
+}
+
+.card__stat {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.2rem;
+  color: #4d4d4d;
+}
+
+.card__stat svg{
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
+.card__pin {
+  display: flex;
+  color: #4d4d4d;
+}
+
+.card__pin svg {
+    width: 1.6rem;
+    height: 1.6rem;
+}
