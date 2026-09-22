@@ -1,0 +1,94 @@
+/* ===== Header ===== */
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 12px 24px;
+    background: #ffffff;
+    border-bottom: 1px solid #e8f0ef;
+}
+
+/* ---- Search ---- */
+.header__search {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    max-width: 280px;
+    padding: 8px 12px;
+    border: 1px solid #c0cfcc;
+    border-radius: 8px;
+    color: #4d4d4d;
+    cursor: text;
+}
+
+.header__search:focus-within {
+    border-color: #014745;
+    box-shadow: 0 0 0 2px rgba(1, 71, 69, 0.15);
+}
+
+.header__search svg {
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+}
+
+.header__search input {
+    flex: 1;
+    min-width: 0;
+    border: none;
+    outline: none;
+    font-size: 13px;
+    color: #051513;
+    background: transparent;
+}
+
+.header__search input::placeholder {
+    color: #4d4d4d;
+}
+
+/* ---- Actions ---- */
+.header__actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.header__add_btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 14px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #ffffff;
+    background: #014745;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.header__add-btn:hover {
+    background: #013331;
+}
+
+.header__add-btn:focus-visible {
+    outline: 2px solid #014745;
+    outline-offset: 2px;
+}
+
+.header__add-btn svg {
+    width: 14px;
+    height: 14px;
+}
+
+.header__avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+}

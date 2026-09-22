@@ -1,5 +1,6 @@
 import './App.css'
 import Card from './components/Card/Card'
+import { Header } from './components/Layout/Header/Header'
 import { Sidebar } from './components/Layout/Sidebar/Sidebar'
 
 function App() {
@@ -8,6 +9,7 @@ function App() {
     <div className="app">
         <Sidebar />
         <div className="app__right">
+            <Header />
             <Card
                 id={1}
                 title="Example Bookmark"
