@@ -1,0 +1,56 @@
+/* ===== Main section ===== */
+.main {
+    flex: 1;
+    padding: 24px;
+    background: #e8f0ef;
+}
+
+/* ---- Title + Sort ---- */
+.main__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+
+.main__title {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.main__sort_btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 12px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #051513;
+    background: #ffffff;
+    border: 1px solid #c0cfcc;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.main__sort-btn:hover {
+     background: #f5f9f8;
+}
+
+.main__sort-btn:focus-visible {
+    outline: 2px solid #014745;
+    outline-offset: 2px;
+}
+
+.main__sort-btn svg {
+    width: 16px;
+    height: 16px;
+}
+
+/* ---- Cards grid: 3 columns on desktop, fewer on smaller screens ---- */
+.main__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 20px;
+    align-items: stretch;
+}
