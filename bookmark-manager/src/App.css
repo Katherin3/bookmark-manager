@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap");
+ 
 * {
     box-sizing: border-box;
     margin: 0;
@@ -41,4 +41,16 @@ input {
     border: none;
     outline: none;
     cursor: pointer;
+}
+
+.app {
+  display: flex;
+  min-height: 100vh;
+}
+ 
+.app__right {
+  flex: 1;
+  min-width: 0; /* prevents the card grid from pushing the page wider */
+  display: flex;
+  flex-direction: column;
 }

@@ -1,0 +1,122 @@
+/* ===== Sidebar ===== */
+.sidebar {
+    position: sticky;
+    top: 0;
+    flex-shrink: 0;
+    width: 240px;
+    height: 100vh;
+    overflow-y: auto;
+    padding: 16px 12px;
+    background: #ffffff;
+    border-right: 1px solid #e8f0ef;
+}
+
+/* ---- Logo ---- */
+.sidebar__logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 4px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.sidebar__logo_icon {
+    width: 26px;
+    height: 26px;
+    display: grid;
+    place-items: center;
+    background: #014745;
+    color: #ffffff;
+    border-radius: 6px;
+}
+
+.sidebar__logo_icon svg {
+    width: 15px;
+    height: 15px;
+}
+
+/* ---- Navigation ---- */
+.sidebar__nav {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 20px;
+}
+
+.sidebar__link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 10px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #4d4d4d;
+    text-decoration: none;
+    border-radius: 6px;
+}
+
+.sidebar__link svg {
+    width: 16px;
+    height: 16px;
+}
+
+.sidebar__link:hover,
+.sidebar__link_active {
+    background: #e8f0ef;
+    color: #051513;
+}
+
+/* ---- Tags ---- */
+.sidebar__heading {
+    margin: 0 0 6px;
+    padding: 0 10px;
+    font-size: 11px;
+    font-weight: 600;
+    color: #4C5C59;
+}
+
+.sidebar__tags {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.sidebar__tag {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 10px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #2d3d3b;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.sidebar__tag:hover {
+    background: #e8f0ef;
+}
+
+.sidebar__checkbox {
+    width: 15px;
+    height: 15px;
+    margin: 0;
+    accent-color: #014745;
+    cursor: pointer;
+}
+
+.sidebar__tag_name {
+    flex: 1;
+}
+
+.sidebar__count {
+    min-width: 20px;
+    padding: 1px 6px;
+    font-size: 10px;
+    text-align: center;
+    color: #4d4d4d;
+    background: #e8f0ef;
+    border-radius: 999px;
+}
