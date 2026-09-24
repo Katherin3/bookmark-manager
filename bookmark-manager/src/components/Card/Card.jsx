@@ -1,7 +1,7 @@
 import Styles from "./Card.module.css";
 import { useState } from "react";
 
-function Card({ bookmark, onTogglePin }) {
+function Card({ bookmark, onEdit, onDelete, onTogglePin }) {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
