@@ -62,7 +62,13 @@ function App() {
         }
     ])
 
-   
+   function onTogglePin(bookmarkId) {
+        setBookmarks((prevBookmarks) =>
+            prevBookmarks.map((bookmark) =>
+                bookmark.id === bookmarkId ? { ...bookmark, isPinned: !bookmark.isPinned } : bookmark
+            )
+        );
+    }
 
     return (
         <div className="app">
@@ -73,7 +79,7 @@ function App() {
                     {bookmarks.length === 0 ? <EmptyData /> : null}
                     
                     {bookmarks.map((bookmark) => (
-                        <Card key={bookmark.id} bookmark={bookmark} />
+                        <Card key={bookmark.id} bookmark={bookmark} onTogglePin={onTogglePin}  />
                     ))}
                 </Main>
             </div>
