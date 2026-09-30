@@ -41,8 +41,6 @@ export function useBookmarks() {
     }, []);
 
     useEffect(() => {
-
-        
         if (isLoading || error) {
             return;
         }
@@ -50,5 +48,5 @@ export function useBookmarks() {
         setStorageKey(STORAGE_KEYS.BOOKMARKS, bookmarks);
     }, [isLoading, error, bookmarks]);
 
-    return { bookmarks, isLoading, error };
+    return { bookmarks, isLoading, error, setBookmarks };
 }

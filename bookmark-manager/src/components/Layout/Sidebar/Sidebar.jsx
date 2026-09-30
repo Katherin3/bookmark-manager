@@ -1,26 +1,36 @@
 import Styles from './Sidebar.module.css'
+import { useBookmarks } from '../../../hooks/useBookmarks'
 
-const tags = [
-  { id: 1, name: "AI", count: 1 },
-  { id: 2, name: "Community", count: 5 },
-  { id: 3, name: "Compatibility", count: 1 },
-  { id: 4, name: "CSS", count: 6 },
-  { id: 5, name: "Design", count: 1 },
-  { id: 6, name: "Framework", count: 2 },
-  { id: 7, name: "Git", count: 1 },
-  { id: 8, name: "HTML", count: 2 },
-  { id: 9, name: "JavaScript", count: 3 },
-  { id: 10, name: "Layout", count: 3 },
-  { id: 11, name: "Learning", count: 6 },
-  { id: 12, name: "Performance", count: 2 },
-  { id: 13, name: "Practice", count: 5 },
-  { id: 14, name: "Reference", count: 4 },
-  { id: 15, name: "Tips", count: 4 },
-  { id: 16, name: "Tools", count: 4 },
-  { id: 17, name: "Tutorial", count: 3 },
-];
 
-export const Sidebar = () => {
+
+
+export const Sidebar = ({ selectedTags, setSelectedTags }) => {
+
+    const tagCounts = useBookmarks().bookmarks.reduce((acc, currentBookmark) => {
+       (currentBookmark.tags || []).forEach((tag) => {
+            acc[tag] = (acc[tag] || 0) + 1;
+        });
+        
+        return acc;
+    }, {});
+
+    const tagsData = Object.entries(tagCounts).map(([key, value]) => ({
+        name: key,
+        count: value,
+    }));
+
+
+    function handleCheckboxChange(event, tagName) {
+        const isChecked = event.target.checked;
+        if (isChecked) {
+            setSelectedTags((prevSelectedTags) => [...prevSelectedTags, tagName]);
+        } else {
+            setSelectedTags((prevSelectedTags) =>
+                prevSelectedTags.filter((tag) => tag !== tagName)
+            );
+        }
+    }  
+
     return (
         <aside className={Styles.sidebar}>
             {/* ---- Logo ---- */}
@@ -54,10 +64,10 @@ export const Sidebar = () => {
             <p className={Styles.sidebar__heading}>Tags</p>
 
             <ul className={Styles.sidebar__tags}>
-            {tags.map((tag) => (
-                <li key={tag.id}>
+            {tagsData.map((tag) => (
+                <li key={tag.name}>
                 <label className={Styles.sidebar__tag}>
-                    <input type="checkbox" className={Styles.sidebar__checkbox} />
+                    <input type="checkbox" onChange={(event) => handleCheckboxChange(event, tag.name)} className={Styles.sidebar__checkbox} />
                     <span className={Styles.sidebar__tag_name}>{tag.name}</span>
                     <span className={Styles.sidebar__count}>{tag.count}</span>
                 </label>

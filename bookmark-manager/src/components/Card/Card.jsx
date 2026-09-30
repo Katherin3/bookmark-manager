@@ -1,8 +1,9 @@
 import Styles from "./Card.module.css";
 import { useState } from "react";
+import { getDomain, getName } from "../../utils/url";
+import { formatDate } from "../../utils/date";
 
-function Card({ bookmark, onEdit, onDelete, onTogglePin }) {
-  const [menuOpen, setMenuOpen] = useState(false);
+function Card({ bookmark, onEdit, onDelete, onTogglePin, menuId, menuOpen, menuClose }) {
 
   return (
     <article className={Styles.card}>
@@ -14,13 +15,13 @@ function Card({ bookmark, onEdit, onDelete, onTogglePin }) {
 
         <div className={Styles.card__title_wrap}>
           <h3 className={Styles.card__title}>{bookmark.title}</h3>
-          <a className={Styles.card__url} href={`https://${bookmark.url}`} target="_blank" rel="noreferrer">
-            {bookmark.url}
+          <a className={Styles.card__url} href={`https://${getDomain(bookmark.url)}`} target="_blank" rel="noreferrer">
+            {getName(bookmark.url)}
           </a>
         </div>
 
-        <div className={Styles.card__menu}>
-          <button className={Styles.card__menu_btn} aria-label="Bookmark options" onClick={() => setMenuOpen(!menuOpen)}>
+        <div className={Styles.card__menu} data-card-menu>
+          <button className={Styles.card__menu_btn} aria-label="Bookmark options" onClick={menuId}>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
               <circle cx="12" cy="5" r="2" />
               <circle cx="12" cy="12" r="2" />
@@ -35,7 +36,7 @@ function Card({ bookmark, onEdit, onDelete, onTogglePin }) {
                   className={Styles.card__dropdown_item}
                   onClick={() => {
                     onTogglePin(bookmark.id);
-                    setMenuOpen(false);
+                    menuClose(null);
                   }}
                 >
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -51,7 +52,7 @@ function Card({ bookmark, onEdit, onDelete, onTogglePin }) {
                   className={Styles.card__dropdown_item}
                   onClick={() => {
                     onToogleArchive(bookmark.id);
-                    setMenuOpen(false);
+                    menuClose(null);
                   }}
                 >
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -68,7 +69,7 @@ function Card({ bookmark, onEdit, onDelete, onTogglePin }) {
                   className={Styles.card__dropdown_item}
                   onClick={() => {
                     onEdit(bookmark.id);
-                    setMenuOpen(false);
+                    menuClose(null);
                   }}
                 >
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -84,8 +85,8 @@ function Card({ bookmark, onEdit, onDelete, onTogglePin }) {
                   className={Styles.card__dropdown_item}
                   onClick={() => {
                     onDelete(bookmark.id);
-                    setMenuOpen(false);
-                  }}
+                    menuClose(null);
+                    }}
                 >
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <path d="M4 20h4L19 9a2.1 2.1 0 0 0-3-3L5 17v3z" />
@@ -126,10 +127,7 @@ function Card({ bookmark, onEdit, onDelete, onTogglePin }) {
               <circle cx="12" cy="12" r="9" />
               <path d="M12 7v5l3 2" />
             </svg>
-            {new Date(bookmark.lastVisitedAt).toLocaleDateString("en-GB", {
-                day: "numeric",
-                month: "short",
-              })}
+            { formatDate(bookmark.lastVisitedAt) }
           </span>
 
           <span className={Styles.card__stat} title="Date added">
@@ -137,10 +135,7 @@ function Card({ bookmark, onEdit, onDelete, onTogglePin }) {
               <rect x="3" y="5" width="18" height="16" rx="2" />
               <path d="M3 10h18M8 3v4M16 3v4" />
             </svg>
-              {new Date(bookmark.createdAt).toLocaleDateString("en-GB", {
-                day: "numeric",
-                month: "short",
-              })}
+              { formatDate(bookmark.createdAt) }
           </span>
         </div>
 

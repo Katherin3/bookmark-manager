@@ -1,7 +1,9 @@
 import Styles from './Header.module.css'
+import { useBookmarks } from '../../../hooks/useBookmarks'
 
-export const Header = () => {
-  return (
+export const Header = ({ searchTerm, setSearchTerm }) => {
+
+    return (
         <header className={Styles.header}>
             {/* ---- Search ---- */}
             <label className={Styles.header__search}>
@@ -9,7 +11,7 @@ export const Header = () => {
                 <circle cx="11" cy="11" r="7" />
                 <path d="M20 20l-4-4" />
                 </svg>
-                <input type="search" placeholder="Search by title..." />
+                <input onChange={(e) => setSearchTerm(e.target.value)} value={searchTerm} placeholder="Search by title..." />
             </label>
         
             {/* ---- Actions ---- */}
