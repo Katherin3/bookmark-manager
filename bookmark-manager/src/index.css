@@ -1,0 +1,58 @@
+.btn__primary {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 14px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #ffffff;
+    background: #014745;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.btn__primary:hover {
+    background: #013331;
+}
+
+.btn__primary:focus-visible {
+    outline: 2px solid #014745;
+    outline-offset: 2px;
+}
+
+.btn__primary svg {
+    width: 14px;
+    height: 14px;
+}
+
+.btn__ghost {
+  padding: 11px 20px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #051513;
+  background: #ffffff;
+  border: 1px solid #c0cfcc;
+}
+
+.btn__ghost:hover {
+  background: #e8f0ef;
+}
+
+.btn__primary {
+  color: #ffffff;
+  background: #014745;
+  border: 1px solid #014745;
+}
+
+.btn__primary:hover {
+  background: #013331;
+}
+
+.btn:focus-visible {
+  outline: 2px solid #014745;
+  outline-offset: 2px;
+}

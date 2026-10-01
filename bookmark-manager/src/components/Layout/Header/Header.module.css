@@ -58,34 +58,6 @@
     gap: 16px;
 }
 
-.header__add_btn {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    padding: 10px 14px;
-    font-size: 13px;
-    font-weight: 600;
-    color: #ffffff;
-    background: #014745;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-}
-
-.header__add-btn:hover {
-    background: #013331;
-}
-
-.header__add-btn:focus-visible {
-    outline: 2px solid #014745;
-    outline-offset: 2px;
-}
-
-.header__add-btn svg {
-    width: 14px;
-    height: 14px;
-}
-
 .header__avatar {
     width: 36px;
     height: 36px;

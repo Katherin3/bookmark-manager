@@ -1,7 +1,11 @@
 import Styles from './Header.module.css'
-import { useBookmarks } from '../../../hooks/useBookmarks'
+import { Button } from '../../Button/Button'
 
-export const Header = ({ searchTerm, setSearchTerm }) => {
+export const Header = ({ searchTerm, setSearchTerm, setIsModalOpen }) => {
+
+    function modalOpenHandler() {
+        setIsModalOpen(true);
+    }
 
     return (
         <header className={Styles.header}>
@@ -16,12 +20,7 @@ export const Header = ({ searchTerm, setSearchTerm }) => {
         
             {/* ---- Actions ---- */}
             <div className={Styles.header__actions}>
-                <button className={Styles.header__add_btn}>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
-                    <path d="M12 5v14M5 12h14" />
-                </svg>
-                Add Bookmark
-                </button>
+                <Button style="primary" icon={true} title="Add Bookmark" type="button" onClick={modalOpenHandler} />
         
                 <img className={Styles.header__avatar} src="public/avatar.png" alt="Your profile" />
             </div>
