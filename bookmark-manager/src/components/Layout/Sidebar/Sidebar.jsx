@@ -1,10 +1,8 @@
 import Styles from './Sidebar.module.css'
 import { useBookmarks } from '../../../hooks/useBookmarks'
+import { useState } from 'react'
 
-
-
-
-export const Sidebar = ({ selectedTags, setSelectedTags }) => {
+export const Sidebar = ({ setSelectedTags, toggleView, view }) => {
 
     const tagCounts = useBookmarks().bookmarks.reduce((acc, currentBookmark) => {
        (currentBookmark.tags || []).forEach((tag) => {
@@ -19,7 +17,6 @@ export const Sidebar = ({ selectedTags, setSelectedTags }) => {
         count: value,
     }));
 
-
     function handleCheckboxChange(event, tagName) {
         const isChecked = event.target.checked;
         if (isChecked) {
@@ -30,6 +27,7 @@ export const Sidebar = ({ selectedTags, setSelectedTags }) => {
             );
         }
     }  
+
 
     return (
         <aside className={Styles.sidebar}>
@@ -45,19 +43,20 @@ export const Sidebar = ({ selectedTags, setSelectedTags }) => {
 
             {/* ---- Navigation ---- */}
             <nav className={Styles.sidebar__nav}>
-                <a href="#" className={Styles.sidebar__link + ' ' + Styles.sidebar__link_active}>
+                
+                <button onClick={() => toggleView('Home')} className={Styles.sidebar__link + (view === 'Home' ? ` ${Styles.sidebar__link_active}` : '')}>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z" />
                     </svg>
                     Home
-                </a>
-                <a href="#" className={Styles.sidebar__link}>
+                </button>
+                <button onClick={() => toggleView('Archived')} className={Styles.sidebar__link + (view === 'Archived' ? ` ${Styles.sidebar__link_active}` : '')}>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <rect x="3" y="4" width="18" height="5" rx="1" />
                     <path d="M5 9v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V9M10 13h4" />
                     </svg>
                     Archived
-                </a>
+                </button>
             </nav>
 
             {/* ---- Tags ---- */}

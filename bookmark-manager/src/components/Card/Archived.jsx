@@ -2,7 +2,7 @@ import Styles from "./Card.module.css";
 import { getDomain, getName } from "../../utils/url";
 import { formatDate } from "../../utils/date";
 
-function Card({ bookmark, onEdit, onDelete, onTogglePin, menuId, menuOpen, menuClose, view, onToggleArchive }) {
+function Archived({ bookmark, onEdit, onDelete, onTogglePin, menuId, menuOpen, menuClose, view, onToggleArchive }) {
 
   return (
       <article className={Styles.card}>
@@ -151,4 +151,4 @@ function Card({ bookmark, onEdit, onDelete, onTogglePin, menuId, menuOpen, menuC
   );
 }
 
-export default Card;
+export default Archived;

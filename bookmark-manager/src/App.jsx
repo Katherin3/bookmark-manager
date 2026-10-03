@@ -12,15 +12,19 @@ function App() {
     const [ sortBy, setSortBy ] = useState('newest');
     const [selectedTags, setSelectedTags] = useState([]);
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [view, setView] = useState('Home');
 
+    function toggleView(viewName) {
+        setView(viewName);
+    }
 
-  return (
+    return (
         <div className="app">
-            <Sidebar selectedTags={selectedTags} setSelectedTags={setSelectedTags} />
+            <Sidebar selectedTags={selectedTags} setSelectedTags={setSelectedTags} toggleView={toggleView} view={view} />
             <div className="app__right">
                 <Header searchTerm={searchTerm} setSearchTerm={setSearchTerm} setIsModalOpen={setIsModalOpen} />
                 <Main sortBy={sortBy} setSortBy={setSortBy}>
-                  <CardList  searchTerm={searchTerm} sortBy={sortBy} selectedTags={selectedTags} />
+                  <CardList  searchTerm={searchTerm} sortBy={sortBy} selectedTags={selectedTags} view={view} />
 
                   {isModalOpen && <ModalOverlay setIsModalOpen={setIsModalOpen}>
                         <BookmarkModal setIsModalOpen={setIsModalOpen} />

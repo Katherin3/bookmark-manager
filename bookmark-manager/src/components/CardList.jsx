@@ -2,9 +2,10 @@ import '../App.css'
 import { useBookmarks } from '../hooks/useBookmarks'
 import { EmptyData } from '../components/EmptyData'
 import Card from '../components/Card/Card'
+import Archived from '../components/Card/Archived'
 import { useState, useEffect } from 'react'
 
-export const CardList = ({ searchTerm, sortBy, selectedTags }) => {
+export const CardList = ({ searchTerm, sortBy, selectedTags, view }) => {
     const { bookmarks, isLoading, error, setBookmarks } = useBookmarks();
     const [menuId, setMenuId] = useState(null);
         
@@ -61,6 +62,10 @@ export const CardList = ({ searchTerm, sortBy, selectedTags }) => {
     function handlePin(bookmarkId) {
         setBookmarks(bookmarks.map((bookmark) => bookmark.id === bookmarkId ? { ...bookmark, isPinned: !bookmark.isPinned } : bookmark));
     }
+
+    function handleArchive(bookmarkId) {
+        setBookmarks(bookmarks.map((bookmark) => bookmark.id === bookmarkId ? { ...bookmark, isArchived: !bookmark.isArchived } : bookmark));
+    }
     
   return (
     <>
@@ -69,10 +74,17 @@ export const CardList = ({ searchTerm, sortBy, selectedTags }) => {
             <p>Loading...</p>
             ) : filteredBookmarks.length === 0 ? (
                 <EmptyData />
-            ) : filteredBookmarks.map((bookmark) => (
-                <Card key={bookmark.id} bookmark={bookmark} onEdit={handleEdit} onDelete={handleDelete} onTogglePin={handlePin} 
-                menuId={() => handleMenuToggle(bookmark.id)} menuOpen={bookmark.id === menuId} menuClose={() => setMenuId(null)} />
-            ))
+            ) : filteredBookmarks.map((bookmark) => {
+                if(view === 'Home') {
+                    return !bookmark.isArchived && 
+                    <Card key={bookmark.id} bookmark={bookmark} onEdit={handleEdit} onDelete={handleDelete} onTogglePin={handlePin} onToggleArchive={handleArchive}
+                    menuId={() => handleMenuToggle(bookmark.id)} menuOpen={bookmark.id === menuId} menuClose={() => setMenuId(null)} view={view} />
+                } else if(view === 'Archived') {
+                    return bookmark.isArchived && 
+                    <Archived key={bookmark.id} bookmark={bookmark} onEdit={handleEdit} onDelete={handleDelete} onTogglePin={handlePin} onToggleArchive={handleArchive}
+                    menuId={() => handleMenuToggle(bookmark.id)} menuOpen={bookmark.id === menuId} menuClose={() => setMenuId(null)} view={view} />
+                }
+            })
         }
 
         {error && <p>Error: {error}</p>}
